@@ -1,0 +1,18 @@
+Source: trusted-firmware-a
+Section: admin
+Priority: optional
+Maintainer: Maxwell <maxwell@blueberrypieos.com>
+Build-Depends: pietoolchain-host (>= 0.3.0), pietoolchain-sdk (>= 0.2.0), gcc-aarch64-linux-gnu,
+ binutils-aarch64-linux-gnu:native
+Standards-Version: 4.7.3
+Homepage: https://www.trustedfirmware.org/projects/tf-a/
+Vcs-Git: https://github.com/blueberrypieos/trusted-firmware-a.git -b blueberry-pie-os/latest
+Vcs-Browser: https://github.com/blueberrypieos/trusted-firmware-a
+Rules-Requires-Root: no
+
+Package: tf-a-rk3568
+Architecture: darwin-arm64
+Description: Trusted Firmware-A BL31 for the RK3566 and RK3568
+ The EL3 runtime firmware for the Rockchip RK3566 and RK3568, as
+ /usr/lib/trusted-firmware-a/rk3568/bl31.elf. It provides PSCI and SCMI.
+ The U-Boot image for these boards includes it.

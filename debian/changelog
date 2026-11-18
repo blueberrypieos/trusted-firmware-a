@@ -1,0 +1,6 @@
+trusted-firmware-a (2.15.0+ds1-1) blueberry-pie-os; urgency=medium
+
+  * Trusted Firmware-A 2.15.0, with BL31 for the RK3566 and RK3568.
+  * The source package keeps only the files the build reads.
+
+ -- Maxwell <maxwell@blueberrypieos.com>  Wed, 18 Nov 2026 20:00:00 +0000

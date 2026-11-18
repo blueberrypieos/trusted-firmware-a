@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+
+include /usr/share/pietoolchain/rules.mk
+
+HOST_PATH := /usr/sbin:/usr/bin:/sbin:/bin
+PLATS := rk3568
+TFA := $(OBJ)/tf-a
+
+$(TFA)/%/release/bl31/bl31.elf:
+	PATH=$(HOST_PATH) $(MAKE) -C $(SRCROOT) BUILD_BASE=$(TFA) CROSS_COMPILE=aarch64-linux-gnu- PLAT=$* \
+		TF_PLATFORM_ROOT=plat/rockchip/$*/ BUILD_STRING=$(DEB_VERSION) bl31
+
+install: $(PLATS:%=$(TFA)/%/release/bl31/bl31.elf)
+	set -e; for p in $(PLATS); do \
+		install -D -m 644 $(TFA)/$$p/release/bl31/bl31.elf \
+			$(ROOT)/usr/lib/trusted-firmware-a/$$p/bl31.elf; \
+	done
+
+.PHONY: install
